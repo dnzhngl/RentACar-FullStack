@@ -1,0 +1,55 @@
+<div class="col col-12">
+
+    <div class="card">
+        <div class="card-header">
+            <h5>Cars</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col ">
+                    <button type="button" class="btn btn-sm btn-success float-end" routerLink="/admin/cars/add"> New
+                        <span class="material-icons">
+                            add_circle_outline
+                        </span> </button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Brand</th>
+                            <th>Model</th>
+                            <th>Model Year</th>
+                            <th>Car Type</th>
+                            <th>Color</th>
+                            <th>Description</th>
+                            <th>Daily Price</th>
+                            <th>Availablitiy</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="response.data">
+                        <tr *ngFor="let car of response.data">
+                            <td>{{car.brand}}</td>
+                            <td>{{car.model}}</td>
+                            <td>{{car.modelYear}}</td>
+                            <td>{{car.carType}}</td>
+                            <td>{{car.color}}</td>
+                            <td>{{car.description}}</td>
+                            <td>{{car.dailyPrice | currency}}</td>
+                            <td>{{car.isAvailable == true ? "Available" : "Not Available"}}</td>
+                            <td>
+                                <button type="button" class="btn btn-warning btn-sm m-1"
+                                    routerLink="/admin/cars/edit/{{car.id}}"><span
+                                    class="material-icons">edit</span></button>
+                                <button type="button" class="btn btn-danger btn-sm m-1" (click)="delete(car)">  <span
+                                    class="material-icons">delete</span> </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 class="text-center" *ngIf="response">{{response.message}}</h5>
+            </div>
+        </div>
+    </div>
+</div>

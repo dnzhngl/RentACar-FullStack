@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-sm-2 col-12">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <app-brand></app-brand>
+            <app-car-type></app-car-type>
+            <app-color></app-color>
+            <!-- <app-brand (sendBrands)="getSelectedBrands($event)"></app-brand>
+            <app-car-type (sendCarTypes)="getSelectedCarTypes($event)"></app-car-type>
+            <app-color (sendColors)="getSelectedColors($event)"></app-color> -->
+        </div>
+    </div>
+    <div class="col-sm-10 col-12">
+        
+        <div class="row mt-2">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Search for Model" aria-label="Search" aria-describedby="btnDetails">
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="result.data" class="row ">
+            <!-- | filterByColor:selectedColors  | filterByBrand:selectedBrands  | filterByCarType:selectedCarTypes -->
+            <div *ngFor="let car of result.data | filter:filterText " class="card pt-2"
+                style="width: 25rem; margin:5px;">
+
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div *ngFor="let image of car.images; first as isFirst;" [class.active]="isFirst"
+                            class="carousel-item">
+                            <img src="https://localhost:44315/{{image.imagePath}}" class="d-block w-100" alt="...">
+                        </div>
+                        <div *ngIf="car.images.length === 0" class="carousel-item active">
+                            <img src="{{defaultPicture}}" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{car.model}}</h5>
+                    <h6 class="card-title text-center">{{car.brand}}</h6>
+                    <h6 class="card-title text-center">{{car.dailyPrice | currency}}</h6>
+                    <div class="d-grid gap-2 col-6 mx-auto mt-5">
+                        <button routerLink="/cars/details/{{car.id}}" class="btn" type="button">Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

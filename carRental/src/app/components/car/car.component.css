@@ -1,0 +1,19 @@
+.btn{
+    color:whitesmoke;
+    background-color: #303960;
+    border:none;
+}
+
+.btn:hover{
+    background-color: #f8b24f;
+    color:#303960;
+    font-weight: bold;
+    border:none;
+}
+
+img {
+    float: left;
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+}

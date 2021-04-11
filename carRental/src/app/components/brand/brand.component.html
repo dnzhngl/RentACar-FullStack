@@ -1,0 +1,28 @@
+<div id="mainDiv" class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingTwo">
+        <button id="btn" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            <h6>BRANDS</h6>
+        </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+
+        <div class="row mt-2">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Search for brand" aria-label="Search" aria-describedby="btnDetails">
+                </div>
+            </div>
+        </div>
+
+        <div *ngFor="let brand of result.data | filterByBrand:filterText" 
+        (click)="handleSelectedBrands(brand)" 
+        (click)="navigateData()" 
+        [class.selected]="selectedBrands.includes(brand) == true" 
+        [routerLink]="['/cars/search']" 
+        [queryParams]="{brands: brand.name}" 
+        queryParamsHandling="merge"
+        id="accordionItem" class="accordion-body">{{brand.name}}</div> 
+         <!-- routerLink="/cars/brand/{{brand.id}}"-->
+    </div>
+</div>

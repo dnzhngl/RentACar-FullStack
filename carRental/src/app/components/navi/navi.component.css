@@ -1,0 +1,10 @@
+#navbar{
+    background-color: #303960;
+}
+
+button:hover{
+    background-color: #f8b24f;
+    color:#303960;
+    font-weight: bold;
+    border:none;
+}

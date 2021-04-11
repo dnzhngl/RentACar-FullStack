@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-header">
+        <h5>Rentals</h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Brand</th>
+                        <th>Model</th>
+                        <th>Color</th>
+                        <th>Rent Date</th>
+                        <th>Return Date</th>
+                        <th>Discount</th>
+                        <th>Total Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="response.data">
+                    <tr *ngFor="let rental of response.data">
+                        <td>{{rental.customerName}}</td>
+                        <td>{{rental.brand}}</td>
+                        <td>{{rental.model}}</td>
+                        <td>{{rental.color}}</td>
+                        <td>{{rental.rentDate}}</td>
+                        <td>{{rental.returnDate}}</td>
+                        <td>{{rental.discount}}</td>
+                        <td>{{rental.totalPrice}}</td>
+                        <td>
+                            <button class="btn btn-info btn-sm m-1" routerLink="/admin/rentals/details/{{rental.id}}"> <span class="material-icons">
+                                search
+                                </span> </button>
+                            <button class="btn btn-warning btn-sm m-1" (click)="update(rental)"> <span
+                                class="material-icons">edit</span>  </button>
+                            <button class="btn btn-danger btn-sm m-1" (click)="delete(rental)"> <span
+                                class="material-icons">delete</span> </button>
+            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h5 class="text-center" *ngIf="response.data!">{{response.message}}</h5>
+        </div>
+    </div>
+</div>

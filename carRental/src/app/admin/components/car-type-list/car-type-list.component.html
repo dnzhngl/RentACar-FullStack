@@ -1,0 +1,40 @@
+<div class="col col-md-6 col-12">
+
+        <div class="card">
+            <div class="card-header">
+                <h5>Car Types</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col ">
+                        <button type="button" class="btn btn-success btn-sm m-1 float-end" routerLink="/admin/cartypes/add"> New <span
+                            class="material-icons">
+                            add_circle_outline
+                        </span> </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Car Type Name</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="carTypes">
+                            <tr *ngFor="let carType of carTypes">
+                                <td>{{carType.name}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning btn-sm m-1" routerLink="/admin/cartypes/edit/{{carType.id}}"><span
+                                        class="material-icons">edit</span> </button>
+                                    <button type="button" class="btn btn-danger btn-sm m-1" (click)="delete(carType)"> <span
+                                        class="material-icons">delete</span> </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h5 class="text-center" *ngIf="response">{{response.message}}</h5>
+                </div>
+            </div>
+        </div>
+        </div>

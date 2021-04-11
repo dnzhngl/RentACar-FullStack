@@ -1,0 +1,157 @@
+<div class="row  m-2">
+    <div class="col col-12 col-lg-6">
+        <div class="card">
+            <h5 class="card-header">
+                Rental Agreement
+            </h5>
+            <div class="card-body">
+                <form [formGroup]="rentForm">
+                    <div class="mb-4">
+                        <h5 class="card-title">Customer Information</h5>
+                        <hr />
+                        <input type="hidden" formControlName="customerId" value="{{currentCustomer.id}}"/>
+                        <table class="table table-borderless">
+                            <tbody>
+                                <div class="row">
+                                    <div class="col">
+                                        <tr>
+                                            <th scope="col">Full Name  </th>
+                                            <th>:</th>
+                                            <td scope="col">{{currentCustomer.firstName}} {{currentCustomer.lastName}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col">Birthdate  </th>
+                                            <th>:</th>
+                                            <td>{{currentCustomer.dob | date}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col">Age  </th>
+                                            <th>:</th>
+                                            <td>{{currentCustomer.dob | age}}</td>
+                                        </tr>
+                                    </div>
+                                    <div class="col"  >
+                                        <tr>
+                                            <th scope="col">Phone  </th>
+                                            <th>:</th>
+                                            <td>{{currentCustomer.phoneNumber}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col">Address  </th>
+                                            <th>:</th>
+                                            <td>{{currentCustomer.address}}</td>
+                                        </tr>
+                                    </div>
+                                </div>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="card-title">Car Information</h5>
+                        <hr />
+                        <div class="row">
+                            <div *ngIf="selectedCar.images?.length > 0" class="col col-12 col-lg-6">
+                                <div class="card">
+                                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div *ngFor="let image of selectedCar.images; first as isFirst;" [class.active]="isFirst" class="carousel-item">
+                                                <img src="https://localhost:44315/{{image.imagePath}}" class="d-block w-100" alt="...">
+                                            </div>
+                                        <!-- <div *ngIf="selectedCar.imagePaths.length === 0" class="carousel-item active">
+                                                <img src="{{defaultPicture}}" class="d-block w-100" alt="...">
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-12 col-lg-6">
+                            <input type="hidden" formControlName="carId" value="{{selectedCar.id}}"/>
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <div class="row">
+                                        <div class="col">
+                                            <tr>
+                                                <th scope="col">Brand  </th>
+                                                <th>:</th>
+                                                <td scope="col">{{selectedCar.brand}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col">Model  </th>
+                                                <th>:</th>
+                                                <td>{{selectedCar.model}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col">Model Year  </th>
+                                                <th>:</th>
+                                                <td>{{selectedCar.modelYear}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col">Capacity  </th>
+                                                <th>:</th>
+                                                <td>{{selectedCar.capacity}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col">Color  </th>
+                                                <th>:</th>
+                                                <td>{{selectedCar.color}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col">Car Type  </th>
+                                                <th>:</th>
+                                                <td>{{selectedCar.carType}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col">Daily Price  </th>
+                                                <th>:</th>
+                                                <td>{{selectedCar.dailyPrice | currency}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">{{selectedCar.description}}</td>
+                                            </tr>
+                                        </div>
+                                    </div>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h5 class="card-title">Rental Details</h5>
+                        <hr />
+                        <div class="row">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="form-group row mb-1">
+                                        <label for="rentDate" class="col col-md-4 col-12 col-form-label"><b>Rent Date</b></label>
+                                        <div class="col col-md-8 col-12">
+                                          <input class="form-control" type="date" id="rentDate" formControlName="rentDate" (change)="calculateTotalPrice()" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="returnDate" class="col col-md-4 col-12 col-form-label"><b>Return Date</b></label>
+                                        <div class="col col-md-8 col-12">
+                                          <input class="form-control" type="date" id="returnDate" formControlName="returnDate" (change)="calculateTotalPrice()" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="row">
+                                    <label *ngIf="calculatedTotalPrice" class="form-label"><b>Total Price: </b>{{calculatedTotalPrice | currency }} </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2 col-6 mx-auto mt-5">
+                        <button class="btn" type="button" [disabled]='!rentForm.valid' (click)="clicked = true" (click)="checkForm()">Continue To Payment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col col-12 col-lg-6">
+        <app-payment *ngIf="clicked" [rentFormValues]="rentForm.value"></app-payment>
+    </div>
+</div>

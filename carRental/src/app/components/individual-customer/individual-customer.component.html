@@ -1,0 +1,27 @@
+<h3>Individual Customers</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Identity No</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Username</th>
+            <th>Phone Number</th>
+            <th>E-mail</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of individualCustomers">
+            <td>{{customer.id}}</td>
+            <td>{{customer.identityNo}}</td>
+            <td>{{customer.firstName}}</td>
+            <td>{{customer.lastName}}</td>
+            <td>{{customer.userName}}</td>
+            <td>{{customer.phoneNumber}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{customer.address}}</td>
+        </tr>
+    </tbody>
+</table>

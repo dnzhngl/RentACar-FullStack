@@ -1,0 +1,100 @@
+<div class="row">
+    <div class="col col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 *ngIf="isAddMode">Add Car</h5>
+                <h5 *ngIf="!isAddMode">Update Car</h5>
+            </div>
+            <div class="card-body">
+                <form  [formGroup]="carForm" (ngSubmit)="onSubmit()" class="row g-3">
+                   
+                    <div class="col-md-6">
+                        <label for="brand" class="form-label">Brand</label>
+                        <select formControlName="brandId"  class="form-select" aria-label="Default select example">
+                            <option selected >Select Brand</option>
+                            <option *ngFor="let brand of brands" value="{{brand.id}}" >{{brand.name}}</option>
+                        </select>
+                     </div>
+                     <div class="col-md-6">
+                         <label for="model" class="form-label">Model</label>
+                         <input type="text" formControlName="model" class="form-control"id="model" aria-describedby="model">
+                     </div>
+                 
+                     <div class="col-md-6">
+                         <label for="modelYear" class="form-label">Model Year</label>
+                         <input type="number" formControlName="modelYear" class="form-control"id="modelYear" aria-describedby="modelYear">
+                     </div>
+                     <div class="col-md-6">
+                         <label for="capacity" class="form-label">Capacity</label>
+                         <input type="number" formControlName="capacity" class="form-control"id="capacity" aria-describedby="capacity" placeholder="0">
+                     </div>
+                   
+                     <div class="col-md-6">
+                         <label for="colorId" class="form-label">Color</label>
+                         <select formControlName="colorId"  class="form-select" aria-label="Default select example">
+                             <option selected>Select Color</option>
+                             <option *ngFor="let color of colors" value="{{color.id}}" >{{color.name}}</option>
+                         </select>
+                     </div>
+                     <div class="col-md-6">
+                         <label for="carTypeId" class="form-label">Car Type</label>
+                         <select formControlName="carTypeId"  class="form-select" aria-label="Default select example">
+                             <option selected>Select Car Type</option>
+                             <option *ngFor="let carType of carTypes" value="{{carType.id}}" >{{carType.name}}</option>
+                         </select>
+                     </div>
+                 
+                     <div class="col-md-6">
+                         <label for="dailyPrice" class="form-label">Daily Price</label>
+                         <!-- <input type="number" formControlName="dailyPrice" class="form-control"id="dailyPrice" aria-describedby="dailyPrice"> -->
+
+                        <div class="input-group mb-3">
+                             <span class="input-group-text">$</span>
+                             <input formControlName="dailyPrice" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                             <span class="input-group-text">.00</span>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                         <label for="isAvailable" class="form-label">Availability</label>
+                         <div class="input-group">
+                             <div class="form-check form-check-inline">
+                                 <input formControlName="isAvailable" class="form-check-input" type="radio" name="isAvailable" id="available" [value]="true">
+                                 <label class="form-check-label" for="available">Available</label>
+                             </div>
+                             <div class="form-check form-check-inline">
+                                 <input formControlName="isAvailable" class="form-check-input" type="radio" name="isAvailable" id="notAvailable" [value]="false">
+                                 <label class="form-check-label" for="notAvailable">Not Available</label>
+                             </div>
+                         </div>
+                     </div>
+
+                       
+                    <div class="col-12">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" formControlName="description" class="form-control"id="description" aria-describedby="description">
+                    </div>
+                  
+                    <div class="imageDiv col-12">
+                
+                        <div *ngIf="carDetailDto" class="row">
+                            <label for="images" class="form-label">Images</label>
+
+                            <div *ngIf="carDetailDto.images" class="col-12">
+                                <img *ngFor="let image of carDetailDto.images" src="https://localhost:44315/{{image.imagePath}}" class="smallImg rounded mx-auto" alt="..." >
+                            </div>
+                        </div>
+             
+                        <div *ngIf="carDetailDto.images?.length < 5 || isAddMode" class="mb-3">
+                            <label for="formFileMultiple" class="form-label">Select Images</label>
+                            <input accept=".jpeg, .png, .jpg, .gif" class="form-control" type="file" id="formFileMultiple" multiple >
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto mt-5">
+                        <button id="btn" class="btn btn-primary" type="submit" [disabled]='!carForm.valid'> Save </button> 
+                        <!-- (click)="backClicked()" -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

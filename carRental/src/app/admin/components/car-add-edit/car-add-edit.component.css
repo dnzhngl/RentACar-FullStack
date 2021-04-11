@@ -1,0 +1,31 @@
+/* .btn{
+    color:whitesmoke;
+    background-color: #303960;
+    border:none;
+}
+
+.btn:hover{
+    background-color: #f8b24f;
+    color:#303960;
+    font-weight: bold;
+    border:none;
+} */
+
+.smallImg{
+    padding: 2px;
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.imageDiv .row{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+.imageDiv .col{
+    flex: 50%;
+    padding: 0 4px;
+}

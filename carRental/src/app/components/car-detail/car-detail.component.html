@@ -1,0 +1,74 @@
+<div class="card mt-2">
+  <div class="row">
+    <div class="col col-md-6 col-12">
+      <div id="crouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+          <div *ngFor="let image of carDetail.images; first as isFirst;" [class.active]="isFirst" class="carousel-item">
+            <img src="https://localhost:44315/{{image.imagePath}}" class="d-block w-100" alt="...">
+          </div>
+          
+          <div *ngIf="carDetail.images?.length === 0" class="carousel-item active">
+            <img  src="{{defaultPicture}}" class="d-block w-100" alt="...">
+          </div>
+          
+        </div>
+        
+        <button class="carousel-control-prev" type="button" data-bs-target="#crouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#crouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="col col-12 col-md-6">
+      <div class="card-body">
+        <table class="table mt-5">
+          <tbody>
+            <tr>
+              <th> Brand </th>
+              <td>{{carDetail.brand}}</td>
+            </tr>
+            <tr>
+              <th> Model </th>
+              <td>{{carDetail.model}}</td>
+            </tr>
+            <tr>
+              <th> Model Year </th>
+              <td>{{carDetail.modelYear}}</td>
+            </tr>
+            <tr>
+              <th> Color </th>
+              <td>{{carDetail.color}}</td>
+            </tr>
+            <tr>
+              <th> Capacity </th>
+              <td>{{carDetail.capacity}}</td>
+            </tr>
+            <tr>
+              <th> Car Type </th>
+              <td>{{carDetail.carType}}</td>
+            </tr>
+            <tr>
+              <th> Daily Price </th>
+              <td>{{carDetail.dailyPrice | currency }} </td>
+            </tr>
+            <tr>
+              <th> Availability </th>
+              <td>{{carDetail.isAvailable == true ? "Available" : "Not Available"  }} </td>
+            </tr>
+
+          </tbody>
+        </table>
+        <div class="d-grid gap-2 col-6 mx-auto mt-5">
+          <button class="btn " type="button" routerLink="/cars/rent/{{carDetail.id}}">Rent</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

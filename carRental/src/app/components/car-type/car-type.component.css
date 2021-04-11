@@ -1,0 +1,21 @@
+a, button{
+    color:whitesmoke;
+    background-color: #303960;
+}
+#mainDiv{
+    border-bottom: 1px solid #e5e5e5;
+}
+#accordionItem:hover{
+    color:#303960;
+    background-color: #f8b24f ;
+    font-weight: bold;
+}
+.accordion-button{
+    color:whitesmoke;
+    background-color: #303960;
+}
+.selected{
+    color:#303960;
+    background-color: #f8b24f ;
+    font-weight: bold;
+}

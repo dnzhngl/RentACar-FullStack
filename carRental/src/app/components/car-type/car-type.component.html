@@ -1,0 +1,45 @@
+<div id="mainDiv" class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+        <button id="btn" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+            <h6>CAR TYPES</h6>
+        </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+
+        <div class="row mt-2">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Search for brand" aria-label="Search" aria-describedby="btnDetails">
+                </div>
+            </div>
+        </div>
+
+
+        <div *ngFor="let carType of result.data | filterByCarType:filterText" 
+        (click)="handleSelectedCarTypes(carType)" 
+        (click)="navigateData()" 
+        [class.selected]="selectedCarTypes.includes(carType) == true" 
+        
+        [routerLink]="['/cars/search']" 
+        [queryParams]="{cartypes: carType.id}" 
+        queryParamsHandling="merge"
+        
+        id="accordionItem" class="accordion-body">{{carType.name}}</div>
+        <!-- routerLink="/cars/cartype/{{carType.id}}" -->
+    </div>
+
+<!--<div class="list-group list-group-flush">
+        <a routerLink="/cars" class="list-group-item list-group-item-action " aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Car Types</h5>
+            </div>
+        </a>
+
+        <button *ngFor="let carType of result.data" type="button" (click)="addSelectedCarTypes(carType)"
+            routerLink="/cars/cartype/{{carType.id}}" class="list-group-item list-group-item-action "
+            aria-current="true">
+            {{carType.name}}
+        </button>
+    </div> -->
+</div>

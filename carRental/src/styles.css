@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: #e5e5e5;
+    color:#303960;
+}
+
+/*Mor -> 303960
+  Sarı -> f8b24f
+*/
+
+html, body { height: 100%; padding: 0px; margin: 0;}
+body { font-family: "Helvetica Neue", sans-serif; }
+
+/* 
+button:hover{
+  background-color: #222831;
+  color:#00fff5;
+  border:none;
+}
+
+button{
+  color:whitesmoke;
+  background-color: #222831;
+  border:none;
+} */

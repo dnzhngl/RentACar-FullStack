@@ -1,0 +1,44 @@
+<div id="mainDiv" class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+        <button id="btn" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+           <h6>COLORS</h6>
+        </button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+
+        <div class="row mt-2">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Search for color" aria-label="Search" aria-describedby="btnDetails">
+                </div>
+            </div>
+        </div>
+
+        <div *ngFor="let color of result.data  | filterByColor:filterText" 
+        (click)="handleSelectedColors(color)" 
+        (click)="navigateData()" 
+
+        [routerLink]="['/cars/search']" 
+        [queryParams]="{colors: color.id}" 
+        queryParamsHandling="merge"
+
+        [class.selected]="selectedColors.includes(color) == true" id="accordionItem" 
+        class="accordion-body">{{color.name}}</div>
+        <!-- routerLink="/cars/color/{{color.id}}"   -->
+    </div>
+
+
+    <!-- <div class="list-group list-group-flush">
+        <a routerLink="/cars" class="list-group-item list-group-item-action " aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Colors</h5>
+            </div>
+        </a>
+
+        <button *ngFor="let color of result.data" type="button" (click)="addSelectedColors(color)"
+            routerLink="/cars/color/{{color.id}}" class="list-group-item list-group-item-action" aria-current="true">
+            {{color.name}}
+        </button>
+    </div> -->
+</div>

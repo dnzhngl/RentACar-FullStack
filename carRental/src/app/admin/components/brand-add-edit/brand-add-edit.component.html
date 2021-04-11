@@ -1,0 +1,20 @@
+    <div class="col col-12 col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 *ngIf="isAddMode">Add Brand</h5>
+                <h5 *ngIf="!isAddMode">Update Brand</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="brandForm" (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                        <label for="brandName" class="form-label">Brand Name</label>
+                        <input type="text" formControlName="name" class="form-control"id="brandName" aria-describedby="brandName">
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto mt-5">
+                        <button id="btn" class="btn btn-primary" type="submit" [disabled]='!brandForm.valid'> Save </button> 
+                        <!-- (click)="backClicked()" -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,75 @@
+<div id="homePage" class="parallax container-fluid">
+
+  <div class="bgimg-1">
+    <div class="caption">
+      <!-- <span class="border">CAR RENTAL COMPANY</span> -->
+      <div class="d-flex">
+        <div class="card">
+          <div class="card-body ">
+            <div class="row">
+              <div class="form-group row ">
+                <label for="rentDate" class="col col-md-4 col-12 col-form-label"><b>RENT DATE</b></label>
+                <div class="col col-md-8 col-12">
+                  <input class="form-control" type="date" id="rentDate" [(ngModel)]="rentDate">
+                  <!-- | date:'yyyy-MM-dd'  -->
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="returnDate" class="col col-md-4 col-12 col-form-label"><b>RETURN DATE</b></label>
+                <div class="col col-md-8 col-12">
+                  <input class="form-control" type="date" id="returnDate" [(ngModel)]="returnDate" />
+                </div>
+              </div>
+              <div class="d-grid gap-2 col-6 mx-auto mt-5">
+                <button id="btn" class="btn btn-primary btn-lg" (click)="navigateToCars()" [disabled]="!rentDate">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="color: #303960;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+    <h3 style="text-align:center;">WHO WE ARE</h3>
+    <p> Nascetur per nec posuere turpis, lectus nec libero turpis nunc at, sed posuere mollis ullamcorper libero ante
+      lectus, blandit pellentesque a, magna turpis est sapien duis blandit dignissim. Viverra interdum mi magna mi,
+      morbi sociis. Condimentum dui ipsum consequat morbi, curabitur aliquam pede, nullam vitae eu placerat eget et
+      vehicula. Varius quisque non molestie dolor, nunc nisl dapibus vestibulum at, sodales tincidunt mauris
+      ullamcorper, dapibus pulvinar, in in neque risus odio. Accumsan fringilla vulputate at quibusdam sociis eleifend,
+      aenean maecenas vulputate, non id vehicula lorem mattis, ratione interdum sociis ornare. Suscipit proin magna cras
+      vel, non sit platea sit, maecenas ante augue etiam maecenas, porta porttitor placerat leo.</p>
+  </div>
+
+  <div class="bgimg-2">
+    <div class="caption">
+      <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">CARS</span>
+    </div>
+  </div>
+
+  <div style="position:relative;">
+    <div style="color:#ddd;background-color:#303960;text-align:center;padding:50px 80px;text-align: justify;">
+      <p>Mauris fringilla, quam non laoreet porttitor, felis velit commodo massa, et placerat diam enim ut libero. Sed
+        ac ante neque. Nam pretium ac mauris id mattis. Integer eu arcu a ligula feugiat tempus a id ipsum. </p>
+    </div>
+  </div>
+
+  <div class="bgimg-3">
+    <div class="caption">
+      <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">ABOUT US</span>
+    </div>
+  </div>
+
+  <div style="position:relative;">
+    <div style="color:#ddd;background-color:#303960;text-align:center;padding:50px 80px;text-align: justify;">
+      <p>Praesent eget auctor augue, tincidunt porta nisi. Etiam gravida, neque quis pellentesque blandit, quam erat
+        mattis ipsum, eget molestie eros turpis in augue.</p>
+    </div>
+  </div>
+
+  <div class="bgimg-1">
+    <div class="caption">
+    </div>
+  </div>
+
+</div>

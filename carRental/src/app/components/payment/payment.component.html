@@ -1,0 +1,139 @@
+<!--Credit Card List-->
+<ol *ngIf="response" class="list-group mb-2">
+    <li class="list-group-item d-flex justify-content-between align-items-start"><h5>Credit Cards</h5></li>
+    <li *ngFor="let cc of response.data" class="list-group-item d-flex justify-content-between align-items-start" (click)="patchForm(cc)">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">{{cc.nameOnCard}}</div>
+        {{cc.ccNumber}}
+      </div>
+    </li>
+</ol>
+  
+
+<div class="card">
+    <h5 class="card-header">
+        Payment
+    </h5>
+    <div class="card-body">
+        <form [formGroup]="paymentForm">
+            <h5 class="mb-3">Card Information</h5>
+            <hr />
+
+            <div class="d-block my-3">
+                <div class="custom-control custom-radio">
+                    <input formControlName="paymentMethod" id="credit" name="paymentMethod" type="radio"
+                        class="custom-control-input" checked required [value]="'creditCard'">
+                    <label class="custom-control-label" for="credit">Credit card</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input formControlName="paymentMethod" id="debit" name="paymentMethod" type="radio"
+                        class="custom-control-input" required [value]="'debitCard'">
+                    <label class="custom-control-label" for="debit">Debit card</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input formControlName="paymentMethod" id="paypal" name="paymentMethod" type="radio"
+                        class="custom-control-input" required [value]="'paypal'">
+                    <label class="custom-control-label" for="paypal">Paypal</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="cc-name">Name on card</label>
+                    <input formControlName="nameOnCard" type="text" class="form-control" id="cc-name" placeholder=""
+                        required="">
+                    <small class="text-muted">Full name as displayed on card</small>
+                    <div class="invalid-feedback">
+                        Name on card is required
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="cc-number">Credit card number</label>
+                    <input formControlName="ccNumber" type="text" class="form-control" id="cc-number" placeholder=""
+                        required="" maxlength="15">
+                    <div class="invalid-feedback">
+                        Credit card number is required
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="cc-expiration">Expiration Month</label>
+                    <input formControlName="expirationMonth" type="text" class="form-control" id="cc-expiration-month"
+                        placeholder="" required="" maxlength="2">
+                    <div class="invalid-feedback">
+                        Expiration month required
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="cc-expiration">Expiration Year</label>
+                    <input formControlName="expirationYear" type="text" class="form-control" id="cc-expiration-year"
+                        placeholder="" required="" maxlength="4">
+                    <div class="invalid-feedback">
+                        Expiration year required
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="cc-expiration">CVV</label>
+                    <input formControlName="cvv" type="text" class="form-control" id="cc-cvv" placeholder="" required=""
+                        maxlength="4">
+                    <div class="invalid-feedback">
+                        Security code required
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="true" id="saveCreditCard"
+                            formControlName="saveCreditCard">
+                        <label class="form-check-label" for="saveCreditCard">
+                            Save Credit Card
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <!-- <button class="btn btn-block" type="submit">Continue to Checkout</button> -->
+
+            <div class="d-grid gap-2 col-6 mx-auto mt-5">
+                <button class="btn" type="button" (click)="fakeConfirmCode()" data-bs-toggle="modal"
+                    data-bs-target="#paymentModal">Continue to
+                    Checkout</button>
+                <!-- <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button> -->
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+<!--Confirmation Code Modal-->
+<div [ngClass]="{'showModal':openModal}" class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="paymentModalLabel">Payment Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <h5>Confirm X Bank Payment</h5>
+                    <p>Enter the code sended to your phone.</p>
+                </div>
+                <div class="m-3">
+                    <label for="confirmationCode" class="col-form-label">Confirmation Code:</label>
+                    <input type="text" class="form-control" [(ngModel)]="confirmCodeInput" id="confirmationCode">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn" (click)="checkCode()"> Confirm </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

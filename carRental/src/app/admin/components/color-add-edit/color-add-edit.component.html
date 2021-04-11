@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col col-12 col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 *ngIf="isAddMode">Add Color</h5>
+                <h5 *ngIf="!isAddMode">Update Color</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="colorForm" (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                        <label for="colorName" class="form-label">Color Name</label>
+                        <input type="text" formControlName="name" class="form-control"id="colorName" aria-describedby="colorName">
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto mt-5">
+                        <button class="btn btn-primary" type="submit" [disabled]='!colorForm.valid'> Save </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

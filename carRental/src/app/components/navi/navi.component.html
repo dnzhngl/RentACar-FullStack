@@ -1,0 +1,99 @@
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink=""><img
+                src="https://images.vexels.com/media/users/3/224148/isolated/preview/93de80b810ad081d6d4bae216da5e4e5-antique-sports-car-logo-by-vexels.png"
+                style=" height: 8rem;"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <div class="col">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/cars">Cars</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/cars">Offers</a>
+                    </li>
+                    <!-- <ul class="navbar-nav mb-2 mb-lg-0">
+                            <li class="nav-item dropdown dropend">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false" style="color:whitesmoke;">
+                                    Cars
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" routerLink="cars">All Cars</a></li>
+                                    <li><a class="dropdown-item">Economic Cars</a></li>
+                                    <li><a class="dropdown-item">Comfort Cars</a></li>
+                                    <li><a class="dropdown-item">Prestige Cars</a></li>
+                                    <li><a class="dropdown-item">Premium Cars</a></li>
+                                    <li><a class="dropdown-item">Luxury Cars</a></li>
+                                    <li><a class="dropdown-item">Van Cars</a></li>
+                                </ul>
+                            </li>
+                        </ul> -->
+                </ul>
+            </div>
+            <!-- <div class="col">
+                <form class="d-flex">
+                    <input type="text" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div> -->
+            <div class="col">
+                <!-- LOGIN  -->
+
+                <ul class="navbar-nav mb-2 mb-lg-0" style="float: right; padding-right: 10px;">
+
+                    <div class="row" *ngIf="isLoggedIn">
+                        <div class="col">
+<li class="nav-item dropdown dropstart ">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" style="color:whitesmoke;">
+                                {{userName}}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item"
+                                        routerLink="/profile/{{typeOfCustomer}}/{{userName}}">Profile</a></li>
+                            </ul>
+                        </li>
+                        </div>
+                        <div class="col">
+<li class="nav-item">
+                            <a class="nav-link active" role="button" aria-current="page" routerLink="/logout"
+                                (click)="logOut()">
+                                <span class="material-icons">
+                                    logout
+                                </span>
+                            </a>
+                        </li>
+                        </div>
+                        
+                        
+                    </div>
+
+                    <li *ngIf="!isLoggedIn" class="nav-item dropdown dropstart">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="color:whitesmoke;">
+                            <span class="material-icons">
+                                login
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" routerLink="/login/individual">Individual Customer</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" routerLink="/login/corporate">Corporate Customer</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
