@@ -29,7 +29,11 @@ export class BrandComponent implements OnInit {
       this.result.data = response.data;
     });
   }
-
+  remove(){
+    this.selectedBrands = [];
+    this.filterText = "";
+    this.routeHelper.clearParams('brands')
+  }
   handleSelectedBrands(brand: Brand) {
     if (this.selectedBrands.includes(brand)) {
       const index = this.selectedBrands.indexOf(brand);

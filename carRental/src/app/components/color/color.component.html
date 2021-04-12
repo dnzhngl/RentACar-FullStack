@@ -2,29 +2,29 @@
     <h2 class="accordion-header" id="flush-headingOne">
         <button id="btn" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-           <h6>COLORS</h6>
+            <h6>COLORS</h6>
         </button>
     </h2>
-    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+        data-bs-parent="#accordionFlushExample">
 
         <div class="row mt-2">
             <div class="col">
-                <div class="input-group mb-3">
-                    <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Search for color" aria-label="Search" aria-describedby="btnDetails">
+                <div class="input-group mb-3 p-1">
+                    <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Search for color"
+                        aria-label="Search" aria-describedby="Search for Colors">
+                    <button class="btn btn-sm btn-outline-danger" type="button" id="button-addon"
+                        (click)="remove()"><span class="material-icons">
+                            clear
+                        </span></button>
                 </div>
             </div>
         </div>
 
-        <div *ngFor="let color of result.data  | filterByColor:filterText" 
-        (click)="handleSelectedColors(color)" 
-        (click)="navigateData()" 
-
-        [routerLink]="['/cars/search']" 
-        [queryParams]="{colors: color.id}" 
-        queryParamsHandling="merge"
-
-        [class.selected]="selectedColors.includes(color) == true" id="accordionItem" 
-        class="accordion-body">{{color.name}}</div>
+        <div *ngFor="let color of result.data  | filterByColor:filterText" (click)="handleSelectedColors(color)"
+            (click)="navigateData()" [routerLink]="['/cars/search']" [queryParams]="{colors: color.id}"
+            queryParamsHandling="merge" [class.selected]="selectedColors.includes(color) == true" id="accordionItem"
+            class="accordion-body">{{color.name}}</div>
         <!-- routerLink="/cars/color/{{color.id}}"   -->
     </div>
 

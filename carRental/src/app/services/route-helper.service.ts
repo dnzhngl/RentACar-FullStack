@@ -53,4 +53,14 @@ getQueryStringValue(parameterName:string){
    return this.arrayOfValues;
 }
 
+clearParams(parameterName:string){
+  this.router.navigate([],{
+    queryParams:{
+      [`${parameterName}`]: null
+    }, 
+    queryParamsHandling :'merge'
+  })
+}
+
+
 }

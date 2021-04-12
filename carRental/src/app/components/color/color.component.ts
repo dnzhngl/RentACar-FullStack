@@ -30,6 +30,12 @@ export class ColorComponent implements OnInit {
     });
   }
 
+  remove(){
+    this.selectedColors = [];
+    this.filterText = "";
+    this.routeHelper.clearParams('colors')
+  }
+
   handleSelectedColors(color: Color) {
     if (this.selectedColors.includes(color)) {
       const index = this.selectedColors.indexOf(color);
@@ -44,6 +50,6 @@ export class ColorComponent implements OnInit {
   }
   navigateData(){
     let colors = this.selectedColors.map(c => {return c.name;});
-    this.routeHelper.navigateWithArray('colors',colors, '/cars/search')
+    this.routeHelper.navigateWithArray('colors', colors, '/cars/search')
   }
 }

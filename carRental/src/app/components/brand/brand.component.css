@@ -1,6 +1,7 @@
 a, button{
     color:whitesmoke;
     background-color: #303960;
+    border: none;
 }
 #mainDiv{
     border-bottom: 1px solid #e5e5e5;

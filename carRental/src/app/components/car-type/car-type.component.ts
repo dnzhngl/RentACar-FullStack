@@ -27,6 +27,11 @@ export class CarTypeComponent implements OnInit {
       this.result.data = response.data;
     })
   }
+  remove(){
+    this.selectedCarTypes = [];
+    this.filterText = "";
+    this.routeHelper.clearParams('cartypes')
+  }
 
   handleSelectedCarTypes(carType:CarType){
     if(this.selectedCarTypes.includes(carType)){
