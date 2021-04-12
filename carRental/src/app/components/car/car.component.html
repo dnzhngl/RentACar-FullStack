@@ -1,3 +1,4 @@
+
 <div class="row">
     <div class="col-sm-2 col-12">
         <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -9,16 +10,19 @@
             <app-color (sendColors)="getSelectedColors($event)"></app-color> -->
         </div>
     </div>
-    <div class="col-sm-10 col-12">
-        
+    <div class="col-sm-10 col-12 ">
         <div class="row mt-2">
-            <div class="col">
+            <div class="col col-sm-9 col-11">
                 <div class="input-group mb-3">
-                    <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Search for Model" aria-label="Search" aria-describedby="btnDetails">
+                    <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Search for Car's Model"
+                        aria-label="Search" aria-describedby="Search for Colors">
+                    <button class="btn btn-sm" type="button" id="button-addon"
+                        (click)="remove()"><span class="material-icons">
+                            clear
+                        </span></button>
                 </div>
             </div>
         </div>
-
         <div *ngIf="result.data" class="row ">
             <!-- | filterByColor:selectedColors  | filterByBrand:selectedBrands  | filterByCarType:selectedCarTypes -->
             <div *ngFor="let car of result.data | filter:filterText " class="card pt-2"

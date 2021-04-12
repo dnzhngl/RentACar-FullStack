@@ -32,7 +32,6 @@ export class CarComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private routeHelper: RouteHelperService,
-    private location: Location
   ) {}
 
   colorsParams: string[] = [];
@@ -85,7 +84,6 @@ export class CarComponent implements OnInit {
   getCarsWithImages() {
     this.carService.getCarsWithImages().subscribe((response) => {
       this.result = response;
-      // console.log(this.result)
     });
   }
 
@@ -141,6 +139,10 @@ export class CarComponent implements OnInit {
     });
   }
 
+
+  remove(){
+    this.filterText = "";
+  }
   //#region  get selected items from other components
   getSelectedBrands(brands: Brand[]) {
     this.selectedBrands = brands;

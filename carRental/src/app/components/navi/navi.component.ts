@@ -33,7 +33,6 @@ export class NaviComponent implements OnInit {
 
   logOut(){
     this.authService.logOut();
-    this.router.navigateByUrl("/login");
   }
   
 }

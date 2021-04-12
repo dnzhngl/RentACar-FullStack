@@ -89,7 +89,6 @@ const routes: Routes = [
   //no Layouts
   {path:"login/corporate", component: LoginComponent},
   {path:"login/individual", component: LoginComponent},
-  {path:"logout", component: LoginComponent},
   {path:"admin/login", component: AdminLoginComponent},
   {path:"admin/logout", component: AdminLoginComponent},
 

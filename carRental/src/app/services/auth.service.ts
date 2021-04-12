@@ -40,11 +40,9 @@ export class AuthService {
         this.storageService.setToken(response.data.token);
         var decodedToken = this.jwtHelper.decodeToken(this.storageService.getToken());
         this.userName = String(this.tokenValues(decodedToken, '/name'));
-        console.log("login",this.userName);
-
         this.router.navigateByUrl(`/${routingPage}`);
       }, responseError => {
-        this.toastrService.error(responseError.error.message);
+        this.toastrService.error(responseError.error);
       });
   }
 
@@ -56,6 +54,7 @@ export class AuthService {
   logOut() {
     this.storageService.removeToken();
     this.claims = [];
+    this.storageService.removeItem('CustomerType')
   }
 
   isAuthenticated() {

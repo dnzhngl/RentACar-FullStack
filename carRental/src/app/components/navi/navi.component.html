@@ -52,29 +52,29 @@
 
                     <div class="row" *ngIf="isLoggedIn">
                         <div class="col">
-<li class="nav-item dropdown dropstart ">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false" style="color:whitesmoke;">
-                                {{userName}}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item"
-                                        routerLink="/profile/{{typeOfCustomer}}/{{userName}}">Profile</a></li>
-                            </ul>
-                        </li>
+                            <li class="nav-item dropdown dropstart ">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false" style="color:whitesmoke;">
+                                    {{userName}}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item"
+                                            routerLink="/profile/{{typeOfCustomer}}/{{userName}}">Profile</a></li>
+                                </ul>
+                            </li>
                         </div>
                         <div class="col">
-<li class="nav-item">
-                            <a class="nav-link active" role="button" aria-current="page" routerLink="/logout"
-                                (click)="logOut()">
-                                <span class="material-icons">
-                                    logout
-                                </span>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" role="button" aria-current="page" routerLink="/login/{{typeOfCustomer}}"
+                                    (click)="logOut()">
+                                    <span class="material-icons">
+                                        logout
+                                    </span>
+                                </a>
+                            </li>
                         </div>
-                        
-                        
+
+
                     </div>
 
                     <li *ngIf="!isLoggedIn" class="nav-item dropdown dropstart">
