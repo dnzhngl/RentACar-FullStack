@@ -1,5 +1,6 @@
 ﻿using CarRental.Business.Abstract;
 using CarRental.Core.Entities.Concrete;
+using CarRental.Entities.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,17 @@ namespace CarRental.WebApi.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getbyemail")]
+        public IActionResult GetByEmail(string email)
+        {
+            var result = _userService.GetByEmail(email);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpPost("add")]
         public IActionResult Add(User user)
         {
@@ -67,6 +79,16 @@ namespace CarRental.WebApi.Controllers
         public IActionResult Update(User user)
         {
             var result = _userService.Update(user);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpPost("passwordChange")]
+        public IActionResult ChangePassword(ChangePasswordDto changePasswordDto)
+        {
+            var result = _userService.ChangePassword(changePasswordDto);
             if (result.Success)
             {
                 return Ok(result);

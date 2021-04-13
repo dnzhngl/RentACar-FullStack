@@ -46,6 +46,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { PaymentComponent } from './components/payment/payment.component';
 import { AdminFooterComponent } from './admin/components/_layout/admin-footer/admin-footer.component';
 import { CustomerListComponent } from './admin/components/customer-list/customer-list.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { CustomerListComponent } from './admin/components/customer-list/customer
     UserProfileComponent,
     PaymentComponent,
     AdminFooterComponent,
-    CustomerListComponent
+    CustomerListComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

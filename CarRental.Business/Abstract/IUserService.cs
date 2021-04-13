@@ -1,4 +1,5 @@
 ﻿using CarRental.Core.Entities.Concrete;
+using CarRental.Entities.DTOs;
 using Core.Utilities.Results;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,6 @@ namespace CarRental.Business.Abstract
         /// <param name="user"></param>
         /// <returns>If found any, it returns SuccessResult with the list of operation claims, else returns ErrorResult with an authorization denied message.</returns>
         IDataResult<List<OperationClaim>> GetClaims(User user);
-
+        IDataResult<User> ChangePassword(ChangePasswordDto changePasswordDto);
     }
 }

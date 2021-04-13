@@ -17,6 +17,7 @@ import { LoginModel } from 'src/app/models/loginModel';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  customer:string="";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createLoginForm();
+    this.setTypeOfCustomer();
   }
 
   createLoginForm() {
@@ -39,7 +41,7 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.loginForm.valid) {
       let loginModel: LoginModel = Object.assign({}, this.loginForm.value);
-      this.authService.login(loginModel, '')
+      this.authService.login(loginModel, null)
       this.setTypeOfCustomer();
       }else {
       this.toastrService.warning("Please fill in all fields.", "Attention")
@@ -47,12 +49,11 @@ export class LoginComponent implements OnInit {
   }
 
   setTypeOfCustomer(){
-    let customer="";
     if(this.router.url === "/login/corporate"){
-      customer = "corporate"
+      this.customer = "corporate"
     } else if( this.router.url ==="/login/individual"){
-      customer = "individual"
+      this.customer = "individual"
     }
-    localStorage.setItem("CustomerType", customer);
+    localStorage.setItem("CustomerType", this.customer);
   }
 }

@@ -1,0 +1,21 @@
+<main class="form-signin">
+    <form [formGroup]="registerForm">
+        <!-- <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+        <h1 class="h3 mb-3 fw-normal">Register</h1>
+
+        <div class="form-floating">
+            <input type="text" formControlName="userName" class="form-control" id="username" placeholder="John Doe">
+            <label for="username">User Name</label>
+        </div>
+        <div class="form-floating">
+            <input type="email" formControlName="email" class="form-control" id="email" placeholder="name@example.com">
+            <label for="email">Email Address</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password">
+            <label for="password">Password</label>
+        </div>
+
+        <button class="w-100 btn btn-lg" (click)="register()">Register</button>
+    </form>
+</main>

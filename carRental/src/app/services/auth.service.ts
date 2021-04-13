@@ -18,6 +18,7 @@ export class AuthService {
   apiUrl = environment.api_url + 'auth/';
   jwtHelper: JwtHelperService = new JwtHelperService();
   
+  userId:number;
   decodedToken:any;
   userName:string;
   userEmail:string;
@@ -29,7 +30,7 @@ export class AuthService {
     private router: Router,
     private toastrService: ToastrService
   ) {
-    this.setClaims();
+    this.setClaims();    
   }
 
   login(user: LoginModel, routingPage:string) {
@@ -46,15 +47,18 @@ export class AuthService {
       });
   }
 
-  register(user: RegisterModel) {
+  register(user: RegisterModel, customerType:string) {
     let newPath = this.apiUrl + 'register';
-    return this.httpClient.post<ObjectResponseModel<TokenModel>>(newPath, user);
+    return this.httpClient.post<ObjectResponseModel<TokenModel>>(newPath, user).subscribe(response=>{
+      this.router.navigateByUrl(`/login/${customerType}`)
+    });
   }
+
 
   logOut() {
     this.storageService.removeToken();
     this.claims = [];
-    this.storageService.removeItem('CustomerType')
+    this.storageService.removeItem('CustomerType');
   }
 
   isAuthenticated() {
@@ -74,6 +78,7 @@ export class AuthService {
     this.decodedToken = this.jwtHelper.decodeToken(this.storageService.getToken());
     this.userName = String(this.tokenValues(this.decodedToken, "/name"));
     this.userEmail = String(this.tokenValues(this.decodedToken, 'email'))
+    this.userId = Number(this.tokenValues(this.decodedToken, '/nameidentifier'));
     this.claims = this.tokenValues(this.decodedToken, "/role")
     }
   }

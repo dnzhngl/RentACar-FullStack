@@ -66,7 +66,7 @@
                         <div class="col">
                             <li class="nav-item">
                                 <a class="nav-link active" role="button" aria-current="page" routerLink="/login/{{typeOfCustomer}}"
-                                    (click)="logOut()">
+                                    (click)="logOut()">Logout
                                     <span class="material-icons">
                                         logout
                                     </span>
@@ -78,11 +78,11 @@
                     </div>
 
                     <li *ngIf="!isLoggedIn" class="nav-item dropdown dropstart">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false" style="color:whitesmoke;">
+                        <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="color:whitesmoke;"> Login
                             <span class="material-icons">
                                 login
-                            </span>
+                                </span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" routerLink="/login/individual">Individual Customer</a></li>

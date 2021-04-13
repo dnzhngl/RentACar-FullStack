@@ -1,3 +1,4 @@
+import { RegisterComponent } from './components/register/register.component';
 import { CustomerListComponent } from './admin/components/customer-list/customer-list.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
@@ -89,6 +90,8 @@ const routes: Routes = [
   //no Layouts
   {path:"login/corporate", component: LoginComponent},
   {path:"login/individual", component: LoginComponent},
+  {path:"register/corporate", component: RegisterComponent},
+  {path:"register/individual", component: RegisterComponent},
   {path:"admin/login", component: AdminLoginComponent},
   {path:"admin/logout", component: AdminLoginComponent},
 

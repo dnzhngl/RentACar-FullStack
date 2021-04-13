@@ -32,4 +32,8 @@ export class LocalStorageService {
   getTypeOfCustomer(){
     return localStorage.getItem("CustomerType");
   }
+
+  clearStorage(){
+    localStorage.clear();
+  }
 }

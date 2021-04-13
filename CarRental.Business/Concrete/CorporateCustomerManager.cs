@@ -55,7 +55,7 @@ namespace CarRental.Business.Concrete
             return new SuccessDataResult<List<CorporateCustomer>>(_corporateCustomerDal.GetAll());
         }
 
-        [SecuredOperation("admin,corporateCustomer.get,corporateCustomer")]
+        //[SecuredOperation("admin,corporateCustomer.get,corporateCustomer")]
         public IDataResult<CorporateCustomer> GetByEmail(string email)
         {
             var result = _corporateCustomerDal.Get(c => c.Email == email);
@@ -66,7 +66,7 @@ namespace CarRental.Business.Concrete
             return new ErrorDataResult<CorporateCustomer>(Messages.NotFound());
         }
 
-        [SecuredOperation("admin,corporateCustomer.get,customer")]
+        //[SecuredOperation("admin,corporateCustomer.get,customer")]
         public IDataResult<CorporateCustomer> GetById(int customerId)
         {
             var result = _corporateCustomerDal.Get(c => c.Id == customerId);

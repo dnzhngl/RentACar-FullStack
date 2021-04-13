@@ -3,7 +3,9 @@ using CarRental.Business.BusinessAspect;
 using CarRental.Business.Constants;
 using CarRental.Core.Entities.Concrete;
 using CarRental.Core.Utilities.Business;
+using CarRental.Core.Utilities.Security.Hashing;
 using CarRental.DataAccess.Abstract;
+using CarRental.Entities.DTOs;
 using Core.Utilities.Results;
 using System;
 using System.Collections.Generic;
@@ -98,6 +100,21 @@ namespace CarRental.Business.Concrete
             return new SuccessResult(Messages.User.Update());
         }
 
+        public IDataResult<User> ChangePassword(ChangePasswordDto changePasswordDto)
+        {
+            var user = _userDal.Get(u => u.Id == changePasswordDto.Id);
+            if (user == null)
+            {
+                return new ErrorDataResult<User>(Messages.NotFound());
+            }
+            byte[] passwordHash, passwordSalt;
+            HashingHelper.CreatePasswordHash(changePasswordDto.NewPassword, out passwordHash, out passwordSalt);
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+            _userDal.Update(user);
+
+            return new SuccessDataResult<User>(user, Messages.User.PasswordChange());
+        }
         //Business Codes
 
     }

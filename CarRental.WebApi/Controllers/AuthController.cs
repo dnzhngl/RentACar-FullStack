@@ -56,5 +56,6 @@ namespace CarRental.WebApi.Controllers
 
             return BadRequest(result.Message);
         }
+
     }
 }

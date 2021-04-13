@@ -210,6 +210,10 @@ namespace CarRental.Business.Constants
                 //return "Kullanıcı bulunamadı";
                 return "User not found.";
             }
+            public static string PasswordChange()
+            {
+                return $"User password has been successfully changed.";
+            }
         }
         public static class CarImage
         {

@@ -17,6 +17,12 @@
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
-        <button id="btn" class="w-100 btn btn-lg" (click)="login()">Sign in</button>
+        <button class="w-100 btn btn-lg" (click)="login()">Sign in</button>
     </form>
+
+    <div class="row mt-4">
+        <div class="col">
+            <a  class="w-100 btn" routerLink="/register/{{customer}}">Register </a>
+        </div>
+    </div>
 </main>

@@ -22,8 +22,8 @@ export class IndividualCustomerService {
   }
 
   getCurrentCustomer():Observable<ObjectResponseModel<IndividualCustomer>>{
-    let currentUserEmail = this.authService.userEmail;
-    let newPath = this.apiUrl + "getbyemail?email=" + currentUserEmail;
+    let currentUserId = this.authService.userId;
+    let newPath = this.apiUrl + "getbyid?id=" + currentUserId;
     return this.httpClient.get<ObjectResponseModel<IndividualCustomer>>(newPath);
   }
 }

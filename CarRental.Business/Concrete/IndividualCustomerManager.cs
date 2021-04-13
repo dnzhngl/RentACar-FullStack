@@ -55,7 +55,7 @@ namespace CarRental.Business.Concrete
             return new ErrorDataResult<List<IndividualCustomer>>(Messages.NotFound());
         }
 
-        [SecuredOperation("admin,individualCustomer.get,individualCustomer")]
+        //[SecuredOperation("admin,individualCustomer.get,individualCustomer")]
         public IDataResult<IndividualCustomer> GetByEmail(string email)
         {
             var result = _individualCustomerDal.Get(c => c.Email == email);
