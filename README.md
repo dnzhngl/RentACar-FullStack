@@ -1,4 +1,4 @@
-# RentACar-FullStack
+# Rent A Car - FullStack Project
 
 It is a full stack car rental web site project.
 
@@ -95,7 +95,7 @@ Token options placed into the [appsettings.json](#https://github.com/dnzhngl/Ren
 
 
 ## Front-End
-On the front-end Angular framework used. 
+On the front-end Angular framework -version 11.2.3- used. 
 There is an admin panel to control entities. Admin can execute CRUD operations over cars, colors, brands, rentals, and customers.
 People can register the website, and the users can search through cars and rent a car that is available.
 There is also a fake payment component and credit card save function.
