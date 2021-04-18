@@ -2,12 +2,13 @@
 
 It is a full stack car rental web site project.
 
-##Back-End
+## Back-End
 
 On the back-end side, asp.net entity framework core 5.0 version is used.
 The project has 3 basic layers, that are data access, business logic and API, and a core layer for shared needs.
 
 The project was created based on the use of interfaces as reference holders in order to make changes easily in case of need, considering the possibility of change in the technologies used.
+
 
 ## Core Layer
 The core layer, created for to be used in every project.
@@ -18,6 +19,7 @@ It has [base repository interface](#https://github.com/dnzhngl/RentACar-FullStac
 ### Entities
 All of the entities must have to implement the IEntity interface so that the entity can be used with generic repository operations. Also, Dto's (data access objects) must have to implement the IDto interface.
 Users, OperationClaims, and UserOperationClaims entities have been created on this layer. Operation claims, stand for authorizations (roles) based on operations. User operations laims are held in UserOperationClaims.
+
 
 ### Aspects
 
@@ -38,9 +40,11 @@ To monitor the performance of the related operation, the [Performance aspect](#h
 #### Transaction Scope
 Instead of creating transaction scope in the operation, the [Transaction scope aspect](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Aspects/Autofac/Transaction/TransactionScopeAspect.cs) can be placed on top of the operation. In this way, the operation placed into the transaction scope. If an error occurs while the operation runs, all of the transactions undone. E.g. [[TransactionScopeAspect]](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Business/Concrete/CarImageManager.cs)
 
+
 ### Dependency Resolvers
 #### [CoreModule](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/DependencyResolvers/CoreModule.cs)
 It involves IoC injections that are related with the Core layer and loads general dependencies for the project.
+
 
 ### Utilities
 
@@ -51,13 +55,13 @@ An operations business logics can be transformed into a method and then sent Bus
 Result structure helps us to create a standardized return type for the operations.
 For the operations that are void, [IResult](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Utilities/Results/IResult.cs) can be used. For the successful results, [SuccessResult](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Utilities/Results/SuccessResult.cs), for the failed results [ErrorResult](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Utilities/Results/ErrorResult.cs) can be used. Also, for operations that are not void, the [IDataResult](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Utilities/Results/IDataResult.cs) type can be used. [SuccessDataResult](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Utilities/Results/SuccessDataResult.cs) and [ErrorDataResult](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Utilities/Results/ErrorDataResult.cs) are the return types for operations. For the example usages, look into the [manager classes](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Business/Concrete/CarManager.cs).
 
-
 #### Security
 [Hashing Helper](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Utilities/Security/Hashing/HashingHelper.cs)
 For the security purposes, clients password first salted and then hashed with the security algorithm of HmacSha512.
 
 [Jwt Helper](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Utilities/Security/Jwt/JwtHelper.cs)
 Json web token helper, creates token that includes issuer, audiencee, expires, claims with client name identifier, e-mail, name, and roles, and signing credentials.
+
 
 ## Business Layer
 Services and Manager placed on this layer. 
@@ -75,19 +79,22 @@ As a result of an operation, a message can be returned. To manage all of the mes
 #### [Automapper Helper](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Business/Helpers/AutoMapperHelper.cs)
 Automapper to map between entities and dtos.
 
+
 ## Entities Layer
 That includes entities and Dtos.
 There is an inheritance between User, Customer, and Individual customers and Corporate Customer entities. Individual Customer and Corporate Customer entities inherit from Customer entity and Customer entity inherit from User entity.
 
+
 ## Data Access Layer
 That includes fluent api configurations, context and entities' repositories.
+
 
 ## WebApi
 .NET 5.0 web api has been used to create rest api. All of the operations checks through postman. 
 Token options placed into the [appsettings.json](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.WebApi/appsettings.json) file.
 
-## Front-End
 
+## Front-End
 On the front-end Angular framework used. 
 There is an admin panel to control entities. Admin can execute CRUD operations over cars, colors, brands, rentals, and customers.
 People can register the website, and the users can search through cars and rent a car that is available.
