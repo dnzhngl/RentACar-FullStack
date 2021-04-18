@@ -65,7 +65,7 @@ Services and Manager placed on this layer.
 ### Business Aspect
 [Secured operation](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Business/BusinessAspect/SecuredOperation.cs) handles operation-based authorizations. Compares user's role claims with the role permissions assigned to the related operation.
 
-### [Messages] (#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Business/Constants/Messages.cs)
+### [Messages](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Business/Constants/Messages.cs)
 As a result of an operation, a message can be returned. To manage all of the messages in one place, static messages class created.
 
 ### Dependency Resolvers
