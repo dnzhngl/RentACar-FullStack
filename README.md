@@ -28,7 +28,7 @@ For the entity that needs validaiton checks, a validator must be created by usin
 #### Caching
 For caching, microsoft's in-memory cache used. [MemoryCacheManager](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/CrossCuttingConcerns/Caching/Microsoft/MemoryCacheManager.cs) implements, ICacheManager. [ICacheManager](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/CrossCuttingConcerns/Caching/ICacheManager.cs) enables us to use other caching technologies by just implementing from it. Cache manager used in Cache Aspect and Cache Remove Aspect. 
 
-[Cache ascpect](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Aspects/Autofac/Caching/CacheAspect.cs), caches the returned data from tha database as a result of an operation. [CacheAspect] must be placed on top of the desired operation to cache data. [Look for example usage](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Business/Concrete/CarManager.cs) It caches data with a specified key taht indludes, related service name and operation type(Get, Post etc.). E.g. ICarService.Get 
+[Cache ascpect](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Aspects/Autofac/Caching/CacheAspect.cs), caches the returned data from tha database as a result of an operation. [CacheAspect] must be placed on top of the desired operation to cache data. [Look for example usage](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Business/Concrete/CarManager.cs) It caches data with a specified key that indludes, related service name and operation type(Get, Post etc.). E.g. ICarService.Get 
 
 [Cache remove aspect](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Aspects/Autofac/Caching/CacheRemoveAspect.cs), removes from the cache when an operation runs. Cache remove aspect mostly used with operations that manipulates data, such as add, remove and update. Explained usage: [CacheRemoveAspect("ICarService.Get")] can be placed on top off the operations that are adds, deletes or updates the data. It removes the data that has the key as ICarService.Get from the cache, when the operation runs.
 
@@ -53,7 +53,7 @@ For the operations that are void, [IResult](#https://github.com/dnzhngl/RentACar
 
 
 #### Security
-[Hashing Helper] (#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Utilities/Security/Hashing/HashingHelper.cs)
+[Hashing Helper](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Utilities/Security/Hashing/HashingHelper.cs)
 For the security purposes, clients password first salted and then hashed with the security algorithm of HmacSha512.
 
 [Jwt Helper](#https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Utilities/Security/Jwt/JwtHelper.cs)
