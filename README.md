@@ -24,7 +24,7 @@ Users, OperationClaims, and UserOperationClaims entities have been created on th
 ### Aspects
 
 #### Validation
-[ValidationTool](https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/CrossCuttingConcerns/Validation/FluentValidation/ValidationTool.cs) created by using FluentValidation and the tool used in [ValidationAspect](https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Aspects/Autofac/Validation/ValidationAspect.cs) to check whether the entity sent by client is valid.
+[Validation tool](https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/CrossCuttingConcerns/Validation/FluentValidation/ValidationTool.cs) created by using FluentValidation and the tool used in [Validation aspect](https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Aspects/Autofac/Validation/ValidationAspect.cs) to check whether the entity sent by client is valid.
 For the entity that needs validaiton checks, a validator must be created by using FluentValidation. e.g. [CarValidator](https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Business/ValidationRules/FluentValidation/CarValidator.cs). And then, validation aspect can be used on top of the desired methods' like [ValidationAspect(typeof(CarValidator)](https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Business/Concrete/CarManager.cs).
 
 #### Caching
@@ -42,13 +42,13 @@ Instead of creating transaction scope in the operation, the [Transaction scope a
 
 
 ### Dependency Resolvers
-#### [CoreModule](https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/DependencyResolvers/CoreModule.cs)
+#### [Core module](https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/DependencyResolvers/CoreModule.cs)
 It involves IoC injections that are related with the Core layer and loads general dependencies for the project.
 
 
 ### Utilities
 
-#### [Business Rules](https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Utilities/Business/BusinessRules.cs)
+#### [Business rules](https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Utilities/Business/BusinessRules.cs)
 An operations business logics can be transformed into a method and then sent Business Rules as a parameter. If any of the business logic method returns error, business rules returns that error too. E.g. [CarImageManager - Add](https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Business/Concrete/CarImageManager.cs)
 
 #### Results
