@@ -48,8 +48,8 @@ It involves IoC injections that are related with the Core layer and loads genera
 
 ### Utilities
 
-#### [Business rules](https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Utilities/Business/BusinessRules.cs)
-An operations business logics can be transformed into a method and then sent Business Rules as a parameter. If any of the business logic method returns error, business rules returns that error too. E.g. [CarImageManager - Add](https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Business/Concrete/CarImageManager.cs)
+#### [Business rules](https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Core/Utilities/Business/BusinessRules.cs) (Business engine for the logics)
+An operation's business logics should transformed into a method and then sent Business Rules as a parameter. If any of the business logic method returns error, business rules returns that error too. E.g. [CarImageManager - Add](https://github.com/dnzhngl/RentACar-FullStack/blob/851a2ee17f/CarRental.Business/Concrete/CarImageManager.cs)
 
 #### Results
 Result structure helps us to create a standardized return type for the operations.
