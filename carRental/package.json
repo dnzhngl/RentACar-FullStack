@@ -22,7 +22,7 @@
     "@angular/router": "~11.2.4",
     "@auth0/angular-jwt": "^5.0.2",
     "@fortawesome/fontawesome-free": "^5.15.3",
-    "bootstrap": "^5.0.0-beta3",
+    "bootstrap": "^5.2.2",
     "favicon": "^0.0.2",
     "jquery": "^3.6.0",
     "material-design-icons": "^3.0.1",
