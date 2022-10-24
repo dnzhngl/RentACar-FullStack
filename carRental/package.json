@@ -30,7 +30,7 @@
     "ngx-moment": "^5.0.0",
     "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.0",
-    "tslib": "^2.0.0",
+    "tslib": "^2.4.0",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
